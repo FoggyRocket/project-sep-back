@@ -68,7 +68,7 @@ exports.signupProcess = (req, res, next) => {
         });
 
         const newUser = clearRes(user.toObject())
-        res.status(201).json({ user: newUser });
+        res.status(201).json({ result: newUser });
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
@@ -84,6 +84,8 @@ exports.signupProcess = (req, res, next) => {
       });
   });
 };
+
+//MONGODB_URI=mongodb+srv://dylan:Nova182$@cluster0.fusmv.mongodb.net/foggyStore?retryWrites=true&w=majority
 
 exports.loginProcess = async (req, res, next) => {
   try {
@@ -113,7 +115,7 @@ exports.loginProcess = async (req, res, next) => {
       });
       //borrar contraseña!!!!els
       const newUser = clearRes(user.toObject())
-      res.status(200).json({ user:newUser })
+      res.status(200).json({ result:newUser })
     }else{
         res
         .status(400)
